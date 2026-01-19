@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offshore Norge – Tikkere (fra 10. oktober 2024)</title>
+  <style>
+    :root {
+      --bg:#070910;
+      --text:#f4f6fb;
+      --muted:#a5afbd;
+      --line:rgba(255,255,255,.14);
+      --card: rgba(0,0,0,.22);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 12% 6%, #182049 0%, rgba(24,32,73,0) 55%),
+        radial-gradient(900px 550px at 80% 20%, #14364a 0%, rgba(20,54,74,0) 60%),
+        radial-gradient(900px 700px at 50% 120%, #221a3a 0%, rgba(34,26,58,0) 55%),
+        var(--bg);
+    }
+    .wrap{max-width:1200px;margin:0 auto;padding:22px 16px 30px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+    .logo{width:280px;max-width:70vw}
+    .title{font-weight:900;letter-spacing:.2px;font-size:18px;margin:0}
+    .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:75ch}
+    .kpis{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 900px){ .kpis{grid-template-columns:1fr} }
+    .kpi{
+      border:1px solid rgba(255,255,255,.26);
+      background: var(--card);
+      border-radius:20px;
+      padding:18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      min-height: 190px;
+    }
+    .label{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.86);font-size:14px}
+    .value{margin-top:12px;font-size:64px;font-weight:950;letter-spacing:.2px;line-height:1.05}
+    .small{margin-top:10px;color:var(--muted);font-size:13px}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+    .pill{padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.22);color:var(--muted);font-size:12px}
+    .footer{margin-top:14px;color:var(--muted);font-size:11px;opacity:.95}
+    svg{flex:0 0 auto}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+        <img class="logo" src="data:image/png;base64,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" alt="Offshore Norge" />
+        <div>
+          <div class="title">Verdier som tikker inn – fra 10. oktober 2024</div>
+          <div class="sub">Illustrasjon: lineær fordeling av statens netto kontantstrøm (2024). Oppdateres én gang per sekund.</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="label">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="3" stroke="rgba(255,255,255,.88)" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="3" stroke="rgba(255,255,255,.88)" stroke-width="1.8"/>
+          </svg>
+          Penger inn i Oljefondet (akkumulert)
+        </div>
+        <div id="money" class="value">—</div>
+        <div class="small">Start: 10. okt 2024 · Øker sekund for sekund</div>
+      </div>
+
+      <div class="kpi">
+        <div class="label">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="7" r="3" stroke="rgba(255,255,255,.88)" stroke-width="1.8"/>
+            <path d="M5 21c1-4 4-6 7-6s6 2 7 6" stroke="rgba(255,255,255,.88)" stroke-width="1.8" fill="none"/>
+          </svg>
+          Finansierte pensjonsår (akkumulert)
+        </div>
+        <div id="pensions" class="value">—</div>
+        <div class="small">Beregnet som (kroner) / 286 000 kr per år</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="pill">Total 2024 (input): <b>680 400 000 000</b> kr</span>
+      <span class="pill">Sekunder i 2024: <b>31 622 400</b></span>
+      <span class="pill">Startpunkt: <b>10. okt 2024</b></span>
+      <span class="pill">Snitt per sekund: <b id="ratepill">—</b></span>
+    </div>
+
+    <div class="footer">
+      NB: Illustrasjon (jevnt fordelt over året). Faktiske innbetalinger varierer.
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const TOTAL = 680400000000;
+      const PENSION_ANNUAL = 286000;
+      const SECONDS_IN_YEAR = 31622400;
+      const START_SECONDS = 24451200; // 10. okt 2024 00:00
+
+      const ratePerSecond = TOTAL / SECONDS_IN_YEAR;
+      const moneyEl = document.getElementById("money");
+      const pensionsEl = document.getElementById("pensions");
+      const ratePill = document.getElementById("ratepill");
+
+      function formatNOK(n){
+        return new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 }).format(n) + " kr";
+      }
+
+      ratePill.textContent = formatNOK(ratePerSecond) + "/s";
+
+      let accumulated = TOTAL * (START_SECONDS / SECONDS_IN_YEAR);
+
+      function render(){
+        moneyEl.textContent = formatNOK(accumulated);
+        const pensions = accumulated / PENSION_ANNUAL;
+        pensionsEl.textContent = pensions.toLocaleString("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      render();
+
+      setInterval(() => {
+        accumulated += ratePerSecond;
+        render();
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
