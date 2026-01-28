@@ -3,138 +3,798 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Offshore Norge – Tikkere (fra 10. oktober 2024)</title>
+  <title>Norsk sokkel – Bidrag til fellesskapet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#070910;
-      --text:#f4f6fb;
-      --muted:#a5afbd;
-      --line:rgba(255,255,255,.14);
-      --card: rgba(0,0,0,.22);
+      --bg: #050810;
+      --text: #f4f6fb;
+      --muted: #8a94a8;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.4);
+      --gold: #f59e0b;
+      --card: rgba(255,255,255,0.03);
+      --card-border: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.1);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
-      color:var(--text);
-      background:
-        radial-gradient(1200px 700px at 12% 6%, #182049 0%, rgba(24,32,73,0) 55%),
-        radial-gradient(900px 550px at 80% 20%, #14364a 0%, rgba(20,54,74,0) 60%),
-        radial-gradient(900px 700px at 50% 120%, #221a3a 0%, rgba(34,26,58,0) 55%),
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--text);
+      background: 
+        radial-gradient(ellipse 120% 80% at 10% 0%, rgba(30, 58, 138, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 90% 20%, rgba(14, 116, 144, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
         var(--bg);
+      min-height: 100vh;
+      line-height: 1.5;
     }
-    .wrap{max-width:1200px;margin:0 auto;padding:22px 16px 30px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:12px}
-    .logo{width:280px;max-width:70vw}
-    .title{font-weight:900;letter-spacing:.2px;font-size:18px;margin:0}
-    .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:75ch}
-    .kpis{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-top:16px;
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 16px 16px 32px; }
+    
+    /* Header - mer kompakt */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
     }
-    @media (max-width: 900px){ .kpis{grid-template-columns:1fr} }
-    .kpi{
-      border:1px solid rgba(255,255,255,.26);
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .logo-container {
+      width: 56px; height: 56px;
+      background: white;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      overflow: hidden;
+      padding: 6px;
+    }
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .brand-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .brand-text p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-secondary {
       background: var(--card);
-      border-radius:20px;
-      padding:18px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
-      min-height: 190px;
+      color: var(--text);
+      border: 1px solid var(--card-border);
     }
-    .label{display:flex;align-items:center;gap:14px;color:rgba(255,255,255,.86);font-size:14px}
-    .value{margin-top:12px;font-size:64px;font-weight:950;letter-spacing:.2px;line-height:1.05}
-    .small{margin-top:10px;color:var(--muted);font-size:13px}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
-    .pill{padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.22);color:var(--muted);font-size:12px}
-    .footer{margin-top:14px;color:var(--muted);font-size:11px;opacity:.95}
-    svg{flex:0 0 auto}
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+    .btn svg { width: 16px; height: 16px; }
+
+    /* Start-banner */
+    .start-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+    .start-banner strong { color: #fbbf24; }
+
+    /* Hero ticker - hovedtall stort og tydelig */
+    .hero-ticker {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.02) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .hero-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .hero-label svg { width: 20px; height: 20px; opacity: 0.7; }
+    .hero-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @media (max-width: 600px) { .hero-value { font-size: 1.8rem; } }
+    .hero-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 5px 12px;
+      background: rgba(59, 130, 246, 0.15);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    /* Kompakt 5-grid for hovedtall */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 1000px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 450px) { .stats-grid { grid-template-columns: 1fr; } }
+    
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+    .stat-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 10px;
+    }
+    .stat-icon svg { width: 20px; height: 20px; opacity: 0.85; }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .stat-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    @media (max-width: 600px) { .stat-value { font-size: 1.2rem; } }
+    .stat-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .stat-delta {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 8px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 12px;
+      font-size: 0.65rem;
+      color: var(--accent);
+    }
+
+    /* Tilsvarer - kompakt linje */
+    .comparison-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .comp-item {
+      flex: 1;
+      min-width: 140px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .comp-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+    .comp-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Seksjonsdeler */
+    .section-title {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 20px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* Fields - kompakt */
+    .fields-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 900px) { .fields-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px) { .fields-grid { grid-template-columns: repeat(2, 1fr); } }
+    .field-item {
+      padding: 10px;
+      background: var(--card);
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      text-align: center;
+    }
+    .field-name {
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .field-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .field-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #06b6d4);
+      border-radius: 2px;
+    }
+    .field-value {
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    /* Historical - kompakt */
+    .historical {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.15);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .historical-icon {
+      width: 40px; height: 40px;
+      background: rgba(245, 158, 11, 0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .historical-icon svg { width: 22px; height: 22px; }
+    .historical-text { font-size: 0.85rem; }
+    .historical-text strong { color: var(--gold); }
+
+    /* Footer */
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .meta-pill {
+      padding: 6px 10px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .meta-pill strong { color: var(--text); }
+    .footer-note {
+      font-size: 0.65rem;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      left: 50%; top: 16px;
+      transform: translateX(-50%) translateY(-10px);
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.9);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      color: var(--text);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 500px;
+      width: 100%;
+    }
+    .modal h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .modal p { color: var(--muted); font-size: 0.85rem; margin-bottom: 16px; }
+    .modal textarea {
+      width: 100%;
+      height: 100px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      color: var(--text);
+      font-family: monospace;
+      font-size: 0.75rem;
+      resize: none;
+      margin-bottom: 12px;
+    }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .pulse { animation: pulse 0.4s ease; }
   </style>
 </head>
 <body>
+  <div id="toast"></div>
+
+  <div class="modal-overlay" id="embedModal">
+    <div class="modal">
+      <h3>Embed tikkeren</h3>
+      <p>Kopier koden for å vise på din nettside:</p>
+      <textarea readonly id="embedCode">&lt;iframe src="https://norsk-sokkel-tikker.netlify.app/" width="100%" height="700" frameborder="0"&gt;&lt;/iframe&gt;</textarea>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeEmbed()">Lukk</button>
+        <button class="btn btn-primary" onclick="copyEmbed()">Kopier</button>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap">
     <header>
-      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
-        <img class="logo" src="data:image/png;base64,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" alt="Offshore Norge" />
-        <div>
-          <div class="title">Verdier som tikker inn – fra 10. oktober 2024</div>
-          <div class="sub">Illustrasjon: lineær fordeling av statens netto kontantstrøm (2024). Oppdateres én gang per sekund.</div>
+      <div class="brand">
+        <div class="logo-container">
+          <!-- Offshore Norge logo -->
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23003366' width='100' height='100'/%3E%3Ctext x='50' y='35' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold' font-size='12'%3EOFFSHORE%3C/text%3E%3Ctext x='50' y='55' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold' font-size='14'%3ENORGE%3C/text%3E%3Cpath d='M25 70 L50 80 L75 70' stroke='%2300A3E0' stroke-width='3' fill='none'/%3E%3Ccircle cx='50' cy='75' r='3' fill='%2300A3E0'/%3E%3C/svg%3E" alt="Offshore Norge" />
         </div>
+        <div class="brand-text">
+          <h1>Norsk sokkels bidrag til fellesskapet</h1>
+          <p>Sanntidsvisning 2024</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="shareLinkedIn()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Del
+        </button>
+        <button class="btn btn-secondary" onclick="openEmbed()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Embed
+        </button>
       </div>
     </header>
 
-    <div class="kpis">
-      <div class="kpi">
-        <div class="label">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="3" stroke="rgba(255,255,255,.88)" stroke-width="1.8"/>
-            <circle cx="12" cy="12" r="3" stroke="rgba(255,255,255,.88)" stroke-width="1.8"/>
-          </svg>
-          Penger inn i Oljefondet (akkumulert)
-        </div>
-        <div id="money" class="value">—</div>
-        <div class="small">Start: 10. okt 2024 · Øker sekund for sekund</div>
-      </div>
+    <!-- Startdato-banner -->
+    <div class="start-banner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <path d="M16 2v4M8 2v4M3 10h18"/>
+      </svg>
+      Teller fra <strong>1. oktober 2024</strong> – oppdateres hvert sekund
+    </div>
 
-      <div class="kpi">
-        <div class="label">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="7" r="3" stroke="rgba(255,255,255,.88)" stroke-width="1.8"/>
-            <path d="M5 21c1-4 4-6 7-6s6 2 7 6" stroke="rgba(255,255,255,.88)" stroke-width="1.8" fill="none"/>
-          </svg>
-          Finansierte pensjonsår (akkumulert)
-        </div>
-        <div id="pensions" class="value">—</div>
-        <div class="small">Beregnet som (kroner) / 286 000 kr per år</div>
+    <!-- HERO: Netto kontantstrøm -->
+    <div class="hero-ticker">
+      <div class="hero-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+        </svg>
+        Netto kontantstrøm til Statens pensjonsfond utland
+      </div>
+      <div class="hero-value" id="money">—</div>
+      <div class="hero-delta">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+        <span id="taxDelta">+… kr/s</span>
       </div>
     </div>
 
-    <div class="row">
-      <span class="pill">Total 2024 (input): <b>680 400 000 000</b> kr</span>
-      <span class="pill">Sekunder i 2024: <b>31 622 400</b></span>
-      <span class="pill">Startpunkt: <b>10. okt 2024</b></span>
-      <span class="pill">Snitt per sekund: <b id="ratepill">—</b></span>
+    <!-- 4 hovedtall -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <!-- Pensjon/eldre ikon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M5.5 21v-2a6.5 6.5 0 0113 0v2"/>
+            <path d="M15 11l2 2 4-4" stroke="var(--gold)"/>
+          </svg>
+        </div>
+        <div class="stat-label">Finansierte pensjonsår</div>
+        <div class="stat-value" id="pensions">—</div>
+        <div class="stat-delta" id="pensionDelta">+… /min</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <!-- Bil/transport ikon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M5 17h14M5 17l1.5-5h11l1.5 5M5 17v2h2v-2m10 0v2h2v-2"/>
+            <circle cx="7.5" cy="17" r="1.5" fill="currentColor"/>
+            <circle cx="16.5" cy="17" r="1.5" fill="currentColor"/>
+            <path d="M9 12V9M15 12V9"/>
+          </svg>
+        </div>
+        <div class="stat-label">Bilkjøring fra olje</div>
+        <div class="stat-value" id="laps">—</div>
+        <div class="stat-sub" id="wowOsloTrd">—</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <!-- Hus/oppvarming ikon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 10.5L12 4l9 6.5"/>
+            <path d="M5 9.5V20h14V9.5"/>
+            <path d="M12 20v-6"/>
+            <path d="M9 15h6"/>
+            <path d="M10 11a2 2 0 104 0" stroke="var(--gold)"/>
+          </svg>
+        </div>
+        <div class="stat-label">Husstander varmet opp (årsforbruk)</div>
+        <div class="stat-value" id="hhCount">—</div>
+        <div class="stat-sub" id="hhPct">—</div>
+        <div class="stat-delta" id="hhDelta">+… /s</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <!-- Kalender/dager ikon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <path d="M16 2v4M8 2v4M3 10h18"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="stat-label">Husstand-dager levert</div>
+        <div class="stat-value" id="hhDays">—</div>
+        <div class="stat-sub">Daglig energibehov dekket</div>
+        <div class="stat-delta" id="hhDaysDelta">+… /s</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <!-- Jordklode/ekvator ikon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="9"/>
+            <ellipse cx="12" cy="12" rx="9" ry="4"/>
+            <path d="M12 3v18"/>
+          </svg>
+        </div>
+        <div class="stat-label">Runder rundt ekvator</div>
+        <div class="stat-value" id="km">—</div>
+        <div class="stat-sub">fra oljeproduksjonen</div>
+      </div>
     </div>
 
-    <div class="footer">
-      NB: Illustrasjon (jevnt fordelt over året). Faktiske innbetalinger varierer.
+    <!-- Tilsvarer-linje -->
+    <div class="comparison-bar">
+      <div class="comp-item">
+        <div class="comp-value" id="compBudget">—</div>
+        <div class="comp-label">av statsbudsjettet</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-value" id="compHospitals">—</div>
+        <div class="comp-label">nye sykehus</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-value" id="compSchools">—</div>
+        <div class="comp-label">nye skoler</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-value" id="compKm">—</div>
+        <div class="comp-label">km motorvei</div>
+      </div>
+    </div>
+
+    <!-- Felt-fordeling -->
+    <div class="section-title">Bidrag per felt (estimert)</div>
+    <div class="fields-grid" id="fieldsGrid"></div>
+
+    <!-- Historisk -->
+    <div class="historical">
+      <div class="historical-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/>
+          <polyline points="12 7 12 12 15 14"/>
+        </svg>
+      </div>
+      <div class="historical-text">
+        Siden 1990: <strong>≈ 18 000 milliarder kroner</strong> til fellesskapet
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-meta">
+      <span class="meta-pill">Kontantstrøm 2024: <strong>680 mrd kr</strong></span>
+      <span class="meta-pill">Gasseksport: <strong>1 295 TWh</strong></span>
+      <span class="meta-pill">Produksjon: <strong>241 mill Sm³ o.e.</strong></span>
+    </div>
+    <div class="footer-note">
+      Illustrasjon basert på årstall fordelt jevnt. Kilder: Statsbudsjettet, Sokkeldirektoratet, Gassco.
     </div>
   </div>
 
   <script>
-    (function(){
-      const TOTAL = 680400000000;
-      const PENSION_ANNUAL = 286000;
-      const SECONDS_IN_YEAR = 31622400;
-      const START_SECONDS = 24451200; // 10. okt 2024 00:00
+    const CONFIG = {
+      totalCashflow: 680000000000,
+      pensionAnnual: 286000,
+      kmAnnual: 1695481183600,
+      lapsAnnual: 42307702.647536,
+      householdsAnnual: 86333333,
+      // Husstand-dager: 86,3 mill husstander × 365 dager = 31,5 mrd husstand-dager
+      householdDaysAnnual: 86333333 * 365,
+      secondsInYear: 31622400,
+      startSeconds: 23673600,
+      statsBudget2024: 1692000000000,
+      hospitalCost: 12000000000,
+      schoolCost: 500000000,
+      highwayCostPerKm: 300000000
+    };
 
-      const ratePerSecond = TOTAL / SECONDS_IN_YEAR;
-      const moneyEl = document.getElementById("money");
-      const pensionsEl = document.getElementById("pensions");
-      const ratePill = document.getElementById("ratepill");
+    const FIELDS = [
+      { name: 'Johan Sverdrup', pct: 28 },
+      { name: 'Troll', pct: 18 },
+      { name: 'Oseberg', pct: 8 },
+      { name: 'Ekofisk', pct: 7 },
+      { name: 'Snøhvit', pct: 6 },
+      { name: 'Åsgard', pct: 5 },
+      { name: 'Grane', pct: 4 },
+      { name: 'Statfjord', pct: 3 },
+      { name: 'Gullfaks', pct: 3 },
+      { name: 'Andre', pct: 18 }
+    ];
 
-      function formatNOK(n){
-        return new Intl.NumberFormat("nb-NO", { maximumFractionDigits: 0 }).format(n) + " kr";
+    const rates = {
+      tax: CONFIG.totalCashflow / CONFIG.secondsInYear,
+      km: CONFIG.kmAnnual / CONFIG.secondsInYear,
+      laps: CONFIG.lapsAnnual / CONFIG.secondsInYear,
+      households: CONFIG.householdsAnnual / CONFIG.secondsInYear,
+      householdDays: CONFIG.householdDaysAnnual / CONFIG.secondsInYear
+    };
+
+    let acc = {
+      tax: CONFIG.totalCashflow * (CONFIG.startSeconds / CONFIG.secondsInYear),
+      km: CONFIG.kmAnnual * (CONFIG.startSeconds / CONFIG.secondsInYear),
+      laps: CONFIG.lapsAnnual * (CONFIG.startSeconds / CONFIG.secondsInYear),
+      households: CONFIG.householdsAnnual * (CONFIG.startSeconds / CONFIG.secondsInYear),
+      householdDays: CONFIG.householdDaysAnnual * (CONFIG.startSeconds / CONFIG.secondsInYear)
+    };
+
+    let milestones = { p: 0, l: 0, h: 0 };
+
+    const el = {
+      money: document.getElementById('money'),
+      pensions: document.getElementById('pensions'),
+      taxDelta: document.getElementById('taxDelta'),
+      pensionDelta: document.getElementById('pensionDelta'),
+      km: document.getElementById('km'),
+      laps: document.getElementById('laps'),
+      wowOsloTrd: document.getElementById('wowOsloTrd'),
+      hhCount: document.getElementById('hhCount'),
+      hhPct: document.getElementById('hhPct'),
+      hhDelta: document.getElementById('hhDelta'),
+      hhDays: document.getElementById('hhDays'),
+      hhDaysDelta: document.getElementById('hhDaysDelta'),
+      compBudget: document.getElementById('compBudget'),
+      compHospitals: document.getElementById('compHospitals'),
+      compSchools: document.getElementById('compSchools'),
+      compKm: document.getElementById('compKm'),
+      fieldsGrid: document.getElementById('fieldsGrid'),
+      toast: document.getElementById('toast')
+    };
+
+    const fmt = {
+      nok: n => new Intl.NumberFormat('nb-NO', { maximumFractionDigits: 0 }).format(Math.floor(n)) + ' kr',
+      int: n => new Intl.NumberFormat('nb-NO', { maximumFractionDigits: 0 }).format(Math.floor(n)),
+      dec: (n, d = 2) => n.toLocaleString('nb-NO', { minimumFractionDigits: d, maximumFractionDigits: d }),
+      pct: n => n.toLocaleString('nb-NO', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%',
+      millions: n => (n / 1e6).toLocaleString('nb-NO', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' mill',
+      billions: n => (n / 1e9).toLocaleString('nb-NO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' mrd',
+      short: n => {
+        if (n >= 1e9) return (n / 1e9).toFixed(1).replace('.', ',') + ' mrd';
+        if (n >= 1e6) return (n / 1e6).toFixed(1).replace('.', ',') + ' mill';
+        return fmt.int(n);
       }
+    };
 
-      ratePill.textContent = formatNOK(ratePerSecond) + "/s";
+    function render() {
+      el.money.textContent = fmt.nok(acc.tax);
+      el.pensions.textContent = fmt.int(acc.tax / CONFIG.pensionAnnual);
+      
+      el.taxDelta.textContent = '+' + fmt.nok(rates.tax) + '/s';
+      // Pensjonsår per minutt
+      const pensionsPerMin = (rates.tax * 60) / CONFIG.pensionAnnual;
+      el.pensionDelta.textContent = '+' + fmt.dec(pensionsPerMin, 2) + ' /min';
+      
+      el.laps.textContent = fmt.dec(acc.laps, 1) + ' runder';
+      el.km.textContent = fmt.int(acc.km) + ' km';
+      const osloTrd = Math.floor(acc.km / 495);
+      el.wowOsloTrd.textContent = fmt.int(osloTrd) + '× Oslo–Trondheim';
+      
+      // Husstander (årsforbruk)
+      el.hhCount.textContent = fmt.millions(acc.households);
+      const euPct = (acc.households / 200000000) * 100;
+      el.hhPct.textContent = fmt.pct(euPct) + ' av EU';
+      el.hhDelta.textContent = '+' + fmt.dec(rates.households, 1) + ' /s';
+      
+      // Husstand-dager - vis faktiske tall så den tikker fortere
+      el.hhDays.textContent = fmt.int(acc.householdDays);
+      el.hhDaysDelta.textContent = '+' + fmt.int(rates.householdDays) + ' /s';
+      
+      const budgetPct = (acc.tax / CONFIG.statsBudget2024) * 100;
+      el.compBudget.textContent = fmt.pct(budgetPct);
+      el.compHospitals.textContent = fmt.int(acc.tax / CONFIG.hospitalCost);
+      el.compSchools.textContent = fmt.int(acc.tax / CONFIG.schoolCost);
+      el.compKm.textContent = fmt.int(acc.tax / CONFIG.highwayCostPerKm) + ' km';
+      
+      updateFields();
+    }
 
-      let accumulated = TOTAL * (START_SECONDS / SECONDS_IN_YEAR);
+    function updateFields() {
+      el.fieldsGrid.innerHTML = FIELDS.map(f => `
+        <div class="field-item">
+          <div class="field-name">${f.name}</div>
+          <div class="field-bar"><div class="field-bar-fill" style="width:${f.pct}%"></div></div>
+          <div class="field-value">${fmt.short(acc.tax * f.pct / 100)} kr</div>
+        </div>
+      `).join('');
+    }
 
-      function render(){
-        moneyEl.textContent = formatNOK(accumulated);
-        const pensions = accumulated / PENSION_ANNUAL;
-        pensionsEl.textContent = pensions.toLocaleString("nb-NO", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    function checkMilestones() {
+      const p = Math.floor(acc.tax / CONFIG.pensionAnnual);
+      const l = Math.floor(acc.laps);
+      const h = Math.floor(acc.households / 1000000);
+      
+      if (p > milestones.p && p % 100 === 0) {
+        milestones.p = p;
+        toast('🎉 ' + fmt.int(p) + ' pensjonsår finansiert!');
       }
+      if (l > milestones.l) {
+        milestones.l = l;
+        toast('🌍 Runde ' + l + ' rundt ekvator!');
+      }
+      if (h > milestones.h) {
+        milestones.h = h;
+        toast('🏠 ' + h + ' mill husstander varmet!');
+      }
+    }
 
+    function toast(msg) {
+      el.toast.textContent = msg;
+      el.toast.classList.add('show');
+      setTimeout(() => el.toast.classList.remove('show'), 3000);
+    }
+
+    function shareLinkedIn() {
+      const pensions = fmt.int(acc.tax / CONFIG.pensionAnnual);
+      const url = window.location.href;
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+    }
+
+    function openEmbed() { document.getElementById('embedModal').classList.add('show'); }
+    function closeEmbed() { document.getElementById('embedModal').classList.remove('show'); }
+    function copyEmbed() {
+      document.getElementById('embedCode').select();
+      document.execCommand('copy');
+      toast('✓ Kopiert!');
+    }
+    document.getElementById('embedModal').addEventListener('click', e => {
+      if (e.target.id === 'embedModal') closeEmbed();
+    });
+
+    milestones = {
+      p: Math.floor(acc.tax / CONFIG.pensionAnnual),
+      l: Math.floor(acc.laps),
+      h: Math.floor(acc.households / 1000000)
+    };
+
+    render();
+
+    setInterval(() => {
+      acc.tax += rates.tax;
+      acc.km += rates.km;
+      acc.laps += rates.laps;
+      acc.households += rates.households;
+      acc.householdDays += rates.householdDays;
       render();
-
-      setInterval(() => {
-        accumulated += ratePerSecond;
-        render();
-      }, 1000);
-    })();
+      checkMilestones();
+      el.money.classList.remove('pulse');
+      void el.money.offsetWidth;
+      el.money.classList.add('pulse');
+    }, 1000);
   </script>
 </body>
 </html>
